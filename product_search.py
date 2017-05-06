@@ -10,6 +10,9 @@ class product_search():
     def __init__(self,*args, **kwargs):
         super(product_search, self).__init__()
         #test_sayfa = "http://www.hepsiburada.com/gunes-gozlugu-c-1120745?sayfa=2"
+        with open("product.json","w") as f:
+            f.write("{}")
+            f.close()
         try:
             p_args = argparse.ArgumentParser(description='Hepsiburadadan aranılan ürününlinkini verip istenilen sayfa sayısı kadar ürünlerin özelliklerinin json formatında listelenmesi')
             p_args.add_argument("-l",action='store', dest='Link',help="http://www.hepsiburada.com/gunes-gozlugu-c-1120745?sayfa=",type=str)
@@ -25,9 +28,9 @@ class product_search():
                 self.hb = "http://www.hepsiburada.com"
                 self.r = requests.get(self.ul)
                 if self.r.status_code == 200:
-                    with open("product.json","w") as f:
-                        f.write("{}")
-                        f.close()
+                    #with open("product.json","w") as f:
+                    #    f.write("{}")
+                    #    f.close()
                     self.soap = bs(self.r.text, "html.parser")
                     self.get_product_links()
                     self.f_json = {}
