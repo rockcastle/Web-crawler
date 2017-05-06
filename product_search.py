@@ -41,7 +41,7 @@ class product_search():
         try:
             #print(self.soap)
             sp = self.soap("ul", {'class': re.compile('^product-list results-container')})[0]
-            lnk = "http://www.hepsiburada.com/bottega-veneta-b-v-0020s-001-kadin-gunes-gozlugu-p-HBV000000484B"
+            #lnk = "http://www.hepsiburada.com/bottega-veneta-b-v-0020s-001-kadin-gunes-gozlugu-p-HBV000000484B" #No need this
             for i in sp("a"):
                 ln = i.get("href")
                 if ln.startswith("/"):
